@@ -1,0 +1,335 @@
+{
+  "generated_at": "2026-11-16 23:22:25",
+  "random_state": 42,
+  "test_size": 0.2,
+  "dataset": {
+    "n_samples": 11055,
+    "n_features": 30,
+    "n_missing": 0,
+    "n_duplicates": 5206,
+    "phishing_count": 4898,
+    "legitimate_count": 6157,
+    "phishing_pct": 44.3,
+    "legitimate_pct": 55.7,
+    "imbalance_ratio": 0.796,
+    "top_indicators": [
+      {
+        "feature": "SSLfinal_State",
+        "group": "Address-bar based",
+        "pearson_r": -0.7147,
+        "description": "SSL certificate validity, trust issuer and certificate age"
+      },
+      {
+        "feature": "URL_of_Anchor",
+        "group": "Abnormal request based",
+        "pearson_r": -0.6929,
+        "description": "anchor tags linking outside the domain or to '#'"
+      },
+      {
+        "feature": "Prefix_Suffix",
+        "group": "Address-bar based",
+        "pearson_r": -0.3486,
+        "description": "'-' used inside the domain name (prefix/suffix trick)"
+      },
+      {
+        "feature": "web_traffic",
+        "group": "Domain based",
+        "pearson_r": -0.3461,
+        "description": "Alexa traffic rank very low or unknown"
+      },
+      {
+        "feature": "having_Sub_Domain",
+        "group": "Address-bar based",
+        "pearson_r": -0.2983,
+        "description": "number of sub-domains and dots in the URL"
+      },
+      {
+        "feature": "Request_URL",
+        "group": "Abnormal request based",
+        "pearson_r": -0.2534,
+        "description": "page objects (img/css/js) loaded from external domains"
+      },
+      {
+        "feature": "Links_in_tags",
+        "group": "Abnormal request based",
+        "pearson_r": -0.2482,
+        "description": "meta/script/link tags referencing external domains"
+      },
+      {
+        "feature": "Domain_registeration_length",
+        "group": "Address-bar based",
+        "pearson_r": 0.2258,
+        "description": "short domain registration/expiry window"
+      },
+      {
+        "feature": "SFH",
+        "group": "Abnormal request based",
+        "pearson_r": -0.2214,
+        "description": "form handler empty or pointing to a different domain"
+      },
+      {
+        "feature": "Google_Index",
+        "group": "Domain based",
+        "pearson_r": -0.129,
+        "description": "page not indexed by Google"
+      }
+    ]
+  },
+  "split": {
+    "train": 8844,
+    "test": 2211
+  },
+  "tree_best_params": {
+    "max_depth": "None",
+    "min_samples_leaf": 1
+  },
+  "tree_cv_f1": 0.9503,
+  "cross_validation": {
+    "Logistic Regression": {
+      "accuracy_mean": 0.9282000977109547,
+      "accuracy_std": 0.004257232350333023,
+      "f1_mean": 0.9179689733345124,
+      "f1_std": 0.00485144204650338
+    },
+    "Decision Tree": {
+      "accuracy_mean": 0.9562419266963209,
+      "accuracy_std": 0.0037894518392020634,
+      "f1_mean": 0.9502677175744211,
+      "f1_std": 0.004095601949495674
+    },
+    "MLP (64x32)": {
+      "accuracy_mean": 0.9554505191214199,
+      "accuracy_std": 0.004216441434402051,
+      "f1_mean": 0.9495155035973145,
+      "f1_std": 0.004596041855975309
+    }
+  },
+  "models": {
+    "Logistic Regression": {
+      "accuracy": 0.9281,
+      "precision": 0.9344,
+      "recall": 0.901,
+      "f1": 0.9174,
+      "roc_auc": 0.9785,
+      "mcc": 0.8542,
+      "train_seconds": 0.074,
+      "inference_us_per_sample": 1.1,
+      "true_positive": 883,
+      "false_positive": 62,
+      "false_negative": 97,
+      "true_negative": 1169
+    },
+    "Decision Tree": {
+      "accuracy": 0.9697,
+      "precision": 0.976,
+      "recall": 0.9551,
+      "f1": 0.9654,
+      "roc_auc": 0.9764,
+      "mcc": 0.9386,
+      "train_seconds": 0.038,
+      "inference_us_per_sample": 0.7,
+      "true_positive": 936,
+      "false_positive": 23,
+      "false_negative": 44,
+      "true_negative": 1208
+    },
+    "MLP (64x32)": {
+      "accuracy": 0.9656,
+      "precision": 0.9699,
+      "recall": 0.952,
+      "f1": 0.9609,
+      "roc_auc": 0.9944,
+      "mcc": 0.9304,
+      "train_seconds": 3.366,
+      "inference_us_per_sample": 2.7,
+      "true_positive": 933,
+      "false_positive": 29,
+      "false_negative": 47,
+      "true_negative": 1202
+    }
+  },
+  "threshold_analysis": {
+    "sweep": [
+      {
+        "threshold": 0.05,
+        "precision": 0.8457,
+        "recall": 0.9898,
+        "accuracy": 0.9154,
+        "false_positive": 177,
+        "false_negative": 10
+      },
+      {
+        "threshold": 0.1,
+        "precision": 0.8795,
+        "recall": 0.9827,
+        "accuracy": 0.9326,
+        "false_positive": 132,
+        "false_negative": 17
+      },
+      {
+        "threshold": 0.15,
+        "precision": 0.9039,
+        "recall": 0.9786,
+        "accuracy": 0.9444,
+        "false_positive": 102,
+        "false_negative": 21
+      },
+      {
+        "threshold": 0.2,
+        "precision": 0.9133,
+        "recall": 0.9776,
+        "accuracy": 0.9489,
+        "false_positive": 91,
+        "false_negative": 22
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.927,
+        "recall": 0.9724,
+        "accuracy": 0.9539,
+        "false_positive": 75,
+        "false_negative": 27
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.936,
+        "recall": 0.9694,
+        "accuracy": 0.957,
+        "false_positive": 65,
+        "false_negative": 30
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.9468,
+        "recall": 0.9633,
+        "accuracy": 0.9597,
+        "false_positive": 53,
+        "false_negative": 36
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.9583,
+        "recall": 0.9622,
+        "accuracy": 0.9647,
+        "false_positive": 41,
+        "false_negative": 37
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.966,
+        "recall": 0.9561,
+        "accuracy": 0.9656,
+        "false_positive": 33,
+        "false_negative": 43
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.9699,
+        "recall": 0.952,
+        "accuracy": 0.9656,
+        "false_positive": 29,
+        "false_negative": 47
+      },
+      {
+        "threshold": 0.55,
+        "precision": 0.9717,
+        "recall": 0.9469,
+        "accuracy": 0.9643,
+        "false_positive": 27,
+        "false_negative": 52
+      },
+      {
+        "threshold": 0.6,
+        "precision": 0.9778,
+        "recall": 0.9459,
+        "accuracy": 0.9665,
+        "false_positive": 21,
+        "false_negative": 53
+      },
+      {
+        "threshold": 0.65,
+        "precision": 0.984,
+        "recall": 0.9418,
+        "accuracy": 0.9674,
+        "false_positive": 15,
+        "false_negative": 57
+      },
+      {
+        "threshold": 0.7,
+        "precision": 0.9892,
+        "recall": 0.9306,
+        "accuracy": 0.9647,
+        "false_positive": 10,
+        "false_negative": 68
+      },
+      {
+        "threshold": 0.75,
+        "precision": 0.9923,
+        "recall": 0.9224,
+        "accuracy": 0.9625,
+        "false_positive": 7,
+        "false_negative": 76
+      },
+      {
+        "threshold": 0.8,
+        "precision": 0.9933,
+        "recall": 0.9061,
+        "accuracy": 0.9557,
+        "false_positive": 6,
+        "false_negative": 92
+      },
+      {
+        "threshold": 0.85,
+        "precision": 0.9966,
+        "recall": 0.8888,
+        "accuracy": 0.9493,
+        "false_positive": 3,
+        "false_negative": 109
+      },
+      {
+        "threshold": 0.9,
+        "precision": 0.9977,
+        "recall": 0.8704,
+        "accuracy": 0.9417,
+        "false_positive": 2,
+        "false_negative": 127
+      },
+      {
+        "threshold": 0.95,
+        "precision": 0.9988,
+        "recall": 0.8255,
+        "accuracy": 0.9222,
+        "false_positive": 1,
+        "false_negative": 171
+      }
+    ],
+    "optimal_by_cost_ratio": {
+      "1:1": {
+        "threshold": 0.65,
+        "min_cost": 72,
+        "fp_at_optimum": 15,
+        "fn_at_optimum": 57
+      },
+      "10:1": {
+        "threshold": 0.05,
+        "min_cost": 277,
+        "fp_at_optimum": 177,
+        "fn_at_optimum": 10
+      },
+      "20:1": {
+        "threshold": 0.05,
+        "min_cost": 377,
+        "fp_at_optimum": 177,
+        "fn_at_optimum": 10
+      }
+    }
+  },
+  "environment": {
+    "python": "3.14.0",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scikit_learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "platform": "Windows-11-10.0.26300-SP0"
+  }
+}
