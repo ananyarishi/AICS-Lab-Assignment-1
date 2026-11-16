@@ -44,11 +44,11 @@ feature documentation.
 │   ├── phishing_websites.csv
 │   └── feature_descriptions_raw.txt
 ├── src/
-│   ├── main.py              # end-to-end pipeline: EDA -> tuning -> 3 models -> threshold analysis
-│   └── generate_pdf_report.py  # rebuilds Technical_Report.pdf + technical_report.md from metrics.json
+│   ├── main.py                            # end-to-end pipeline: EDA -> tuning -> 3 models -> threshold analysis
+│   └── cybersecurity_threat_detection.ipynb  # executed notebook walking through the full analysis
 ├── results/                 # 8 figures, metrics.json, comparison/threshold/stat tables
 ├── reports/
-│   ├── Technical_Report.pdf # 15-page technical report (black text, monochrome figures)
+│   ├── Technical_Report.pdf # 15-page technical report (black text, colour figures)
 │   └── technical_report.md  # Markdown twin of the PDF
 ├── requirements.txt
 └── README.md
@@ -68,13 +68,13 @@ pip install -r requirements.txt
 # 3. Run the full pipeline (EDA, training, benchmarking, threshold analysis)
 python src/main.py
 
-# 4. Rebuild the technical report from the persisted metrics
-python src/generate_pdf_report.py
+# 4. Explore the analysis interactively (optional; executed copy committed with outputs)
+jupyter notebook src/cybersecurity_threat_detection.ipynb
 ```
 
 The pipeline is deterministic (seed 42, stratified 80/20 split → 8,844 train / 2,211 test).
-Every number quoted in the report is generated from `results/metrics.json`, so re-running
-steps 3–4 always regenerates a report consistent with the latest run.
+Re-running step 3 always reproduces the figures and metrics in `results/`; the report and the
+notebook document the same run, so every quoted number is traceable to a script execution.
 
 ## Results (held-out test split, n = 2,211)
 
@@ -96,13 +96,15 @@ Key findings:
   0.65; recommended posture: autonomous blocking only above ~0.80–0.90, analyst review for
   0.40–0.80.
 
-## Report deliverables
+## Deliverables
 
 - **`reports/Technical_Report.pdf`** — 15-page publication-grade report: title page, table of
   contents, 10 numbered sections, 8 colour figures, 7 colour-styled tables, references and
   appendices. All report text renders in pure black; figures and tables use a professional
   colour palette.
 - **`reports/technical_report.md`** — Markdown twin with the same content and numbers.
+- **`src/cybersecurity_threat_detection.ipynb`** — executed Jupyter notebook reproducing the
+  analysis end-to-end (EDA, model benchmarking, threshold study) with all outputs embedded.
 - **`results/metrics.json`** — machine-readable bundle of every metric, threshold sweep row and
   environment fingerprint.
 
