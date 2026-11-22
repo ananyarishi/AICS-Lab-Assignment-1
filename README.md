@@ -1,7 +1,7 @@
 # AI-Driven Phishing Threat Detection Prototype
 
 **Unit 1 Mini Project — Introduction to AI and Cyber Security (ENSP355)**
-K.R. Mangalam University | Submitted by **Abhinav Kumar** (2301730191, B.Tech CSE (AIML)-C) | Submitted to **Ms. Monika Khatkar**
+K.R. Mangalam University | Submitted by **Ananya Rishi** (2301730178, B.Tech CSE (AIML)-C) | Submitted to **Ms. Monika Khatkar**
 
 ---
 
